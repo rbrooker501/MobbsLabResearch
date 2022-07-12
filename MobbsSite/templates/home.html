@@ -1,17 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>{{ title }}!</h1>
-<p>{{ content }}</p>
-
-<p>
-    {% if likes == 1 %}
-        Post has 1 like!
-    {% else %}
-        Post has {{ likes }} likes!
-    {% endif %}
-</p>
-
+<h1>Posts:</h1>
 <ul>
     {% for x in objectlist %}
         <li><a href='/posts/{{ x.id }}/'> {{ x.title }} - {{ x.content }}</a></li>
