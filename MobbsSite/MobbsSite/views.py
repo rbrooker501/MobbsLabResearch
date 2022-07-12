@@ -8,7 +8,7 @@ from posts.models import Post
 
 
 def home(request, *args, **kwargs):
-    """Take in a request and return HTML as a response"""
+    """Takes in a request and returnz HTML as a response"""
     post_qs = Post.objects.all()
 
     context = {
