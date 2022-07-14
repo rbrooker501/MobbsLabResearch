@@ -26,21 +26,13 @@ def post_search_view(request):
 def post_create_view(request):
     """Takes in a post and creates it"""
     # print(request.POST)
-    form = PostForm()
-    context = {
-        'form': form
-    }
-    if request.method == 'POST':
-        form = PostForm(request.POST)
-        if form.is_valid():
-            title = form.cleaned_data.get('title')
-            content = form.cleaned_data.get('content')
-            print(title, content)
-            post_object = Post.objects.create(title=title, content=content, likes=0)
-            context['title'] = title
-            context['content'] = content
-            context['object'] = post_object
-            context['created'] = True
+    context = {}
+    if request.method == "POST":
+        title = request.POST.get('title')
+        content = request.POST.get('content')
+        post_obj = Post.objects.create(title=title, content=content, likes=0)
+        context['object'] = post_obj
+        context['created'] = True
     return render(request, "posts/create.html", context=context)
 
 def post_detail_view(request, id):
@@ -55,6 +47,11 @@ def post_detail_view(request, id):
         "likes": post_obj.likes
     }
     if request.method == "POST":
-        Post.objects.update(id=id, title=post_obj.title, content=post_obj.content, likes=post_obj.likes+1)
+        post_obj.likes += 1
+        post_obj.save()
+        context = {
+            'object': post_obj
+        }
+        return render(request, 'posts/search.html', context=context)
 
     return render(request, "posts/detail.html", context=context)

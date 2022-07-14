@@ -1,6 +1,13 @@
 from socket import fromshare
 from django import forms
 
+from .models import Post
+
+class PostFormOld(forms.ModelForm):
+    class Meta:
+        model = Post
+        fields = ['title', 'content', 'likes']
+
 class PostForm(forms.Form):
     title = forms.CharField()
     content = forms.CharField()
