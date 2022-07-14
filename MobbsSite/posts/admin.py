@@ -5,6 +5,6 @@ from .models import Post
 
 class PostAdmin(admin.ModelAdmin):
     list_display = ['id', 'title']
-    search_fields = ['title', 'content']
+    search_fields = ['title', 'content', 'likes']
 
 admin.site.register(Post, PostAdmin)

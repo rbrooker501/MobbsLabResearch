@@ -4,4 +4,4 @@ from django.db import models
 class Post(models.Model):
     title = models.TextField()
     content = models.TextField()
-    likes = 0
+    likes = models.IntegerField()
