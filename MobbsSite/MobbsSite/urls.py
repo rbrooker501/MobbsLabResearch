@@ -27,11 +27,6 @@ from posts.views import (
     post_detail_view
 )
 
-from chat.views import (
-    chat_view,
-    room_view
-)
-
 from .views import home
 
 urlpatterns = [
