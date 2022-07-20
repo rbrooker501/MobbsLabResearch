@@ -11,7 +11,7 @@
         {{ post.author.last_name }} - 
         {{ post.post_date }}: {{ post.post_time }}<br/>
 
-        {{ post.body|slice:":150" }} <br/>
+        {{ post.body|slice:":150"|safe}} <br/>
         {% if user.is_authenticated %}
             <a href="{% url 'post-edit' post.pk %}"><small>(Edit) </small></a>
             <a href="{% url 'post-delete' post.pk %}"><small>(Delete) </small></a></li>
