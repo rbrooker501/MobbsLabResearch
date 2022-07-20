@@ -6,6 +6,7 @@
 
 <br/>
 <br/>
+{% if user.is_authenticated %}
 <h3>Delete: {{ post.title }}</h3>
 
 <br/>
@@ -16,5 +17,9 @@
         <button class="btn btn-secondary">Delete Post</button>
     </form>
 </div>
+
+{% else %}
+<p>This action is not permitted. Log in and try again.</p>
+{% endif %}
 
 {% endblock %}
