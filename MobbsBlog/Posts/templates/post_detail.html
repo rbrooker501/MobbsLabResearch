@@ -15,5 +15,6 @@
 <br/><br/>
 <a href="{% url 'home' %}" class="btn btn-secondary">Back</a>
 <a href="{% url 'post-edit' post.pk %}" class="btn btn-secondary" style="margin-left: 10px;">Edit</a>
+<a href="{% url 'post-delete' post.pk %}" class="btn btn-secondary" style="margin-left: 10px;">Delete</a>
 
 {% endblock %}
