@@ -11,6 +11,11 @@
 <small>{{post.author.first_name}} {{ post.author.last_name }} - 
     {{ post.post_date }}: {{ post.post_time }}</small><br/>
 <hr>
+
+{% if post.image %}
+	<img src="{{ post.image.url }}">
+{% endif %}
+
 {{ post.body|safe }} <br/>
 
 {% if total_likes == 1 %}
