@@ -9,6 +9,10 @@ class Post(models.Model):
     body = models.TextField()
     post_date = models.DateField(auto_now_add=True)
     post_time = models.TimeField(auto_now_add=True)
+    likes = models.ManyToManyField(User, related_name='posts')
+
+    def total_likes(self):
+        return self.likes.count()
 
     def __str__(self):
         return self.title + ' || ' + str(self.author)

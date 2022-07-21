@@ -11,7 +11,8 @@
 <small>{{post.author.first_name}} {{ post.author.last_name }} - 
     {{ post.post_date }}: {{ post.post_time }}</small><br/>
 <hr>
-{{ post.body|safe }}
+{{ post.body|safe }} <br/>
+<small>Post has {{ total_likes }} likes</small>
 
 <br/><br/>
 <a href="{% url 'home' %}" class="btn btn-secondary">Back</a>
@@ -19,6 +20,12 @@
     {% if user.id == post.author.id %}
         <a href="{% url 'post-edit' post.pk %}" class="btn btn-secondary" style="margin-left: 10px;">Edit</a>
         <a href="{% url 'post-delete' post.pk %}" class="btn btn-secondary" style="margin-left: 10px;">Delete</a>
+    {% else %}
+        <hr>
+        <form action="{% url 'post-like' post.pk %}" method="POST">
+            {% csrf_token %}
+            <button type="submit", name="post_id", value="{{ post.id }}", class="btn btn-info">Like</button>
+        </form>
     {% endif %}
 {% endif %}
 
