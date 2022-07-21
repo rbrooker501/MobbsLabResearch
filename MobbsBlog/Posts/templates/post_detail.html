@@ -12,7 +12,12 @@
     {{ post.post_date }}: {{ post.post_time }}</small><br/>
 <hr>
 {{ post.body|safe }} <br/>
-<small>Post has {{ total_likes }} likes</small>
+
+{% if total_likes == 1 %}
+    <small>Post has {{ total_likes }} like</small>
+{% else %}
+    <small>Post has {{ total_likes }} likes</small>
+{% endif %}
 
 <br/><br/>
 <a href="{% url 'home' %}" class="btn btn-secondary">Back</a>
@@ -24,7 +29,11 @@
         <hr>
         <form action="{% url 'post-like' post.pk %}" method="POST">
             {% csrf_token %}
-            <button type="submit", name="post_id", value="{{ post.id }}", class="btn btn-info">Like</button>
+            {% if liked %}
+            <button type="submit", name="post_id", value="{{ post.id }}", class="btn btn-info">Unlike</button>
+            {% else %}
+                <button type="submit", name="post_id", value="{{ post.id }}", class="btn btn-info">Like</button>
+            {% endif %}
         </form>
     {% endif %}
 {% endif %}
