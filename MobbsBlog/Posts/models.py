@@ -13,6 +13,7 @@ class Post(models.Model):
     likes = models.ManyToManyField(User, related_name='posts')
     image = models.ImageField(null=True, blank=True, upload_to="images/")
 
+
     def total_likes(self):
         return self.likes.count()
 

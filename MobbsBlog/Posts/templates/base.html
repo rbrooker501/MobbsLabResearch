@@ -25,9 +25,15 @@
           <ul class="navbar-nav mr-auto">
 
             {% if user.is_authenticated %}
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'post-create' %}" style="color: white">Create Post</a>
-              </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: white;">
+                Post
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="{% url 'post-create' %}" style="color:#FF6C0C;">Create Post</a>
+                <a class="dropdown-item" href="{%url 'my-posts' %}" style="color:#FF6C0C;">My Posts</a>
+              </div>
+            </li>
               <li class="nav-item">
                 <a class="nav-link" href="{% url 'edit-profile' %}" style="color: white">Edit Profile</a>
               </li>
