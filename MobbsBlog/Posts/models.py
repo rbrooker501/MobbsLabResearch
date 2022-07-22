@@ -25,6 +25,7 @@ class Post(models.Model):
 class UserProfile(models.Model):
     user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
     bio = models.TextField()
+    profile_picture = models.ImageField(null=True, blank=True, upload_to="images/profile")
 
     def __str__(self):
 	    return str(self.user)
