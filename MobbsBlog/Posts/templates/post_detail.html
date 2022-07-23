@@ -58,4 +58,18 @@
     </div>
 </div>
 
+<hr>
+<h2>Comments:</h2>
+<br/>
+
+{% if not post.comments.all %}
+    No comments yet. Why don't you <a href="#">add one?</a>
+{% else %}
+    {% for comment in post.comments.all %}
+        <strong>{{ comment.name }} - {{comment.date_added}}</strong>
+        <br/>
+        {{ comment.body }}
+    {% endfor %}
+{% endif %}
+
 {% endblock %}
