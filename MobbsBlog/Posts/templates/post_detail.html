@@ -63,9 +63,12 @@
 <br/>
 
 {% if not post.comments.all %}
-    No comments yet. Why don't you <a href="#">add one?</a>
+    No comments yet. Why don't you <a href="{% url 'add-comment' post.pk %}">add one?</a>
 {% else %}
+    <a href="{% url 'add-comment' post.pk %}">Add Comment</a>
+    
     {% for comment in post.comments.all %}
+        <br/><br/>
         <strong>{{ comment.name }} - {{comment.date_added}}</strong>
         <br/>
         {{ comment.body }}
