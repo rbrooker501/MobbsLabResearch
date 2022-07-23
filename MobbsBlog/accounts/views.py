@@ -3,8 +3,8 @@ from django.shortcuts import render, get_object_or_404
 from django.views import generic
 from django.contrib.auth.views import PasswordChangeView
 from django.urls import reverse_lazy
-from django.views.generic import DetailView
-from .forms import SignUpForm, EditProfileForm, ChangePasswordForm
+from django.views.generic import DetailView, CreateView
+from .forms import SignUpForm, EditProfileForm, ChangePasswordForm, CreateProfilePageForm
 from Posts.models import UserProfile
 
 class UserRegisterView(generic.CreateView):
@@ -44,3 +44,12 @@ class EditProfileView(generic.UpdateView):
     template_name='registration/edit_profile_page.html'
     fields = ['bio', 'profile_picture']
     success_url = reverse_lazy('home')
+
+class CreateProfileView(CreateView):
+    model = UserProfile
+    form_class = CreateProfilePageForm
+    template_name='registration/create_profile.html'
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)

@@ -40,9 +40,13 @@
                 {{ user.first_name }} {{ user.last_name }}
               </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="{% url 'edit-profile-page' user.id %}" style="color:#FF6C0C;">Edit Profile Page</a>
                 <a class="dropdown-item" href="{% url 'edit-profile' %}" style="color:#FF6C0C">Edit Settings</a>
-                <a class="dropdown-item" href="{% url 'show-profile' user.id %}" style="color:#FF6C0C;">View Profile Page</a>
+                {% if user.userprofile.id %}
+                  <a class="dropdown-item" href="{% url 'edit-profile-page' user.userprofile.id %}" style="color:#FF6C0C;">Edit Profile Page</a>
+                  <a class="dropdown-item" href="{% url 'show-profile' user.userprofile.id %}" style="color:#FF6C0C;">View Profile Page</a>
+                {% else %}
+                  <a class="dropdown-item" href="{% url 'create-profile' %}" style="color:#FF6C0C;">Create Profile Page</a>
+                {% endif %}
               </div>
             </li>
 
