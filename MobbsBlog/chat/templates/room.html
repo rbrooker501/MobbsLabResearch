@@ -6,14 +6,10 @@
 
 <h1>{{ room.name }}</h1>
 
-<div>
-    <ul>
-    {% for room in rooms %}
-    <li>
-        <a href="#" class="btn btn-primary" style="margin-left: 15px; margin-bottom: 10px;">{{ room.name }}</a>
-    </li>
-    {% endfor %}
-    </ul>
+<div class="container" style="margin-top: 10px;">
+    <textarea id="chat-log" cols="100" rows="20">
+    ry7xsfa: So, does this work?
+    Yes, yes it does!
+    </textarea>
 </div>
-
 {% endblock %}
