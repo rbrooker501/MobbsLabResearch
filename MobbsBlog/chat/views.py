@@ -1,16 +1,10 @@
-from django.contrib.auth.decorators import login_required
+# chat/views.py
 from django.shortcuts import render
 
-from .models import Room
+def indexView(request):
+    return render(request, 'chat/index.html')
 
-@login_required
-def roomsView(request):
-    rooms = Room.objects.all()
-
-    return render (request, 'index.html', {'rooms':rooms})
-
-@login_required
-def chatView(request, slug):
-    room = Room.objects.get(slug=slug)
-
-    return render (request, 'room.html', {'room':room})
+def roomView(request, room_name):
+    return render(request, 'chat/room.html', {
+        'room_name': room_name
+    })
