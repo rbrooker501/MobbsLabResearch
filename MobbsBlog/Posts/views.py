@@ -1,3 +1,7 @@
+"""
+Loads the relevant views for the page that the user is on.
+"""
+
 from ast import Del
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse_lazy, reverse
@@ -7,6 +11,10 @@ from .forms import PostForm, EditForm, CommentForm
 from django.http import HttpResponseRedirect
 
 def LikeView(request, pk):
+    """Handles likes on a post.
+    Arguments:
+      `pk`: The id of the post to like
+    """
     post = get_object_or_404(Post, id=request.POST.get('post_id'))
     liked = False
     if post.likes.filter(id=request.user.id).exists():

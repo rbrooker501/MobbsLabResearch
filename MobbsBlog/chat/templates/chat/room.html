@@ -12,6 +12,7 @@
     <textarea id="chat-log" cols="100" rows="20"></textarea><br>
     <input id="chat-message-input" type="text" size="100" style="margin-top: 10px;"><br>
     <button class="btn btn-secondary" style="margin-top: 5px;" id="chat-message-submit">Send</button>
+    <a href="{% url 'chat' %}" class="btn btn-secondary" style="margin-top: 5px;">Back to room selection</a>
     {{ room_name|json_script:"room-name" }}
     <script>
         const roomName = JSON.parse(document.getElementById('room-name').textContent);

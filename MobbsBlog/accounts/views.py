@@ -1,3 +1,7 @@
+"""
+Loads the relevant views for the page that the user is on.
+"""
+
 from typing import List
 from django.shortcuts import render, get_object_or_404
 from django.views import generic
@@ -25,6 +29,7 @@ class ChangePasswordView(PasswordChangeView):
     success_url = reverse_lazy('password-changed')
 
 def ChangedPasswordView(request):
+    """Redirects the user to a success page upon changing their password"""
     return render(request, 'registration/changed-password.html', {})
 
 class ShowProfileView(DetailView):
